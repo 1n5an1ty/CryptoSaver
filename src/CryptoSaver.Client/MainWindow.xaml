@@ -1,0 +1,12 @@
+﻿<Window x:Class="CryptoSaver.Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CryptoSaver.Client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
+    <Grid Background="Black">
+        <TextBlock x:Name="txtMessage" Foreground="AntiqueWhite" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Grid>
+</Window>
