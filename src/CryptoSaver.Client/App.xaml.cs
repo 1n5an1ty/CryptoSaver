@@ -6,7 +6,7 @@ namespace CryptoSaver.Client
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    [ScreensaverApp(typeof(MainWindow), typeof(ConfigWindow))]
+    [ScreensaverApp(typeof(MainWindow), typeof(ConfigWindow), RepeatOnEachMonitor = true)]
     public partial class App : Application
     {
         private void App_OnStartup(object sender, StartupEventArgs e)

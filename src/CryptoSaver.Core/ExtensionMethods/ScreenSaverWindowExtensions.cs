@@ -6,10 +6,12 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Interop;
+using System.Windows.Media;
 using CryptoSaver.Core.ExtensionMethods;
 using CryptoSaver.Core.Internals;
 using CryptoSaver.Core.Logging;
 using Brushes = System.Windows.Media.Brushes;
+using Point = System.Drawing.Point;
 
 namespace CryptoSaver.Core.ExtensionMethods
 {
@@ -19,6 +21,14 @@ namespace CryptoSaver.Core.ExtensionMethods
     public static class ScreenSaverWindowExtensions
     {
         private static readonly Type This = typeof(ScreenSaverWindowExtensions);
+
+        public static Rect GetCurrentScreenWorkArea(this Window window)
+        {
+            var screen = Screen.FromPoint(new Point((int)window.Left, (int)window.Top));
+            var dpiScale = VisualTreeHelper.GetDpi(window);
+
+            return new Rect { Width = screen.WorkingArea.Width / dpiScale.DpiScaleX, Height = screen.WorkingArea.Height / dpiScale.DpiScaleY };
+        }
 
         internal static void ShowPreview(this Window window, IntPtr intPtr)
         {
