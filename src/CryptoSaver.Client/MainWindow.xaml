@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CryptoSaver.Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
+        Title="Crypto Saver" Height="350" Width="525" Loaded="Window_Loaded" Icon="Resources/CryptoSaver_Icon.ico">
     <Grid Background="Black">
         <TextBlock x:Name="txtMessage" Foreground="AntiqueWhite" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
