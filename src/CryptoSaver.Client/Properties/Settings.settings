@@ -3,13 +3,16 @@
   <Profiles />
   <Settings>
     <Setting Name="StratumURL" Type="System.String" Scope="User">
-      <Value Profile="(Default)">stratum+tcp://prohashing.com:3335</Value>
+      <Value Profile="(Default)">prohashing.com:3359</Value>
     </Setting>
     <Setting Name="Username" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1n5an1ty</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Password" Type="System.String" Scope="User">
-      <Value Profile="(Default)">x</Value>
+      <Value Profile="(Default)">a=randomx</Value>
+    </Setting>
+    <Setting Name="Threads" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.5</Value>
     </Setting>
   </Settings>
 </SettingsFile>

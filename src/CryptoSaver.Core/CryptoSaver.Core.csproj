@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimationHelper.cs" />
+    <Compile Include="Internals\MinerOperations.cs" />
     <Compile Include="Operations.cs" />
     <Compile Include="ExtensionMethods\BitmapExtensions.cs" />
     <Compile Include="ExtensionMethods\ListExtensions.cs" />

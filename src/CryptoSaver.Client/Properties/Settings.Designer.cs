@@ -25,7 +25,7 @@ namespace CryptoSaver.Client.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("stratum+tcp://prohashing.com:3335")]
+        [global::System.Configuration.DefaultSettingValueAttribute("prohashing.com:3359")]
         public string StratumURL {
             get {
                 return ((string)(this["StratumURL"]));
@@ -37,7 +37,7 @@ namespace CryptoSaver.Client.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1n5an1ty")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Username {
             get {
                 return ((string)(this["Username"]));
@@ -49,13 +49,25 @@ namespace CryptoSaver.Client.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("x")]
+        [global::System.Configuration.DefaultSettingValueAttribute("a=randomx")]
         public string Password {
             get {
                 return ((string)(this["Password"]));
             }
             set {
                 this["Password"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
+        public double Threads {
+            get {
+                return ((double)(this["Threads"]));
+            }
+            set {
+                this["Threads"] = value;
             }
         }
     }

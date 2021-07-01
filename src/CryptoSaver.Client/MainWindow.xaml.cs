@@ -1,4 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,6 +21,7 @@ namespace CryptoSaver.Client
         private readonly Timer _timer;
         private readonly double _logoWidth;
         private readonly double _logoHeight;
+
 
         public MainWindow()
         {
@@ -51,6 +55,7 @@ namespace CryptoSaver.Client
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.Log().Info("CryptoSaver is starting");
+            
             //var startPoint = 1;
             //while (true)
             //{

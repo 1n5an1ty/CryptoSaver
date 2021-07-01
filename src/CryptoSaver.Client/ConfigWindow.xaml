@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="Crypto Saver Configuration" 
         SizeToContent="Height"
+        ResizeMode="NoResize"
         Width="400" Icon="Resources/CryptoSaver_Icon.ico">
-    <Grid Margin="15">
+    <Grid Margin="15 5 15 15">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100" />
             <ColumnDefinition Width="*" />
@@ -17,23 +18,41 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="10" />
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
         
+        <!-- Header Logo and Text -->
+        <Image Grid.Row="0" Grid.Column="0" Height="50" Width="104" VerticalAlignment="Top" HorizontalAlignment="Center" Source="Resources/CryptoSaver_Logo.png" />
+        <StackPanel  Grid.Column="1" Grid.Row="0">
+            <TextBlock Text="This screen saver mines Monero using the RandomX algorithm. Please make sure the mining pool allows this and is setup correctly using the information below. If you need to setup an account you can use: " HorizontalAlignment="Left" TextWrapping="Wrap" Foreground="Black" Margin="10 0 0 0" />
+            <TextBlock HorizontalAlignment="Center" Margin="15 5 0 10">
+                <Hyperlink NavigateUri="https://prohashing.com?r=24tm8gE5" RequestNavigate="Hyperlink_RequestNavigate">
+                    https://prohashing.com
+                </Hyperlink>
+            </TextBlock>
+        </StackPanel>
+
+
         <!-- Stratum URL -->
-        <Label Grid.Row="0" Content="Stratum URL:" />
-        <TextBox x:Name="txtStratum" Grid.Row="0" Grid.Column="1" Background="BlanchedAlmond" Margin="2" />
+        <Label Grid.Row="1" Content="Stratum URL:" />
+        <TextBox x:Name="txtStratum" Grid.Row="1" Grid.Column="1" Background="BlanchedAlmond" Margin="2" />
 
         <!-- Username -->
-        <Label Grid.Row="1" Content="Username" />
-        <TextBox x:Name="txtUsername" Grid.Row="1" Grid.Column="1" Background="BlanchedAlmond" Margin="2" />
+        <Label Grid.Row="2" Content="Username:" />
+        <TextBox x:Name="txtUsername" Grid.Row="2" Grid.Column="1" Background="BlanchedAlmond" Margin="2" />
 
         <!-- Password -->
-        <Label Grid.Row="2" Content="Password" />
-        <TextBox x:Name="txtPassword" Grid.Row="2" Grid.Column="1" Background="BlanchedAlmond" Margin="2" />
-        
+        <Label Grid.Row="3" Content="Password:" />
+        <TextBox x:Name="txtPassword" Grid.Row="3" Grid.Column="1" Background="BlanchedAlmond" Margin="2" />
+
+        <!-- Threads -->
+        <Label x:Name="lblThreads" Grid.Row="4" Content="Threads:" />
+        <Slider x:Name="sdrThreads" Grid.Row="4" TickPlacement="BottomRight" TickFrequency="0.25" ValueChanged="sdrThreads_ValueChanged" IsSnapToTickEnabled="True" Minimum="0.25" Maximum="1" Grid.Column="1" Background="BlanchedAlmond" Margin="2" />
+
         <!-- Commands -->
-        <Button Grid.Row="4" Grid.Column="1" Content="Save Changes" Click="SaveChanges_Action" />
+        <Button Grid.Row="6" Grid.Column="1" Content="Save Changes" Click="SaveChanges_Action" />
     </Grid>
 </Window>

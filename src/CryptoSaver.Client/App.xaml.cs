@@ -1,5 +1,7 @@
 ﻿using CryptoSaver.Core;
+using CryptoSaver.Client.Properties;
 using System.Windows;
+using System;
 
 namespace CryptoSaver.Client
 {
@@ -12,6 +14,8 @@ namespace CryptoSaver.Client
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
             Operations.UnhandledException += Core_UnhandledException;
+            var threadCount = (int)(Environment.ProcessorCount * Settings.Default.Threads);
+            Operations.SetupMinerProperties(Settings.Default.StratumURL, Settings.Default.Username, Settings.Default.Password, threadCount);
             Operations.App_Startup(sender, e);
         }
 

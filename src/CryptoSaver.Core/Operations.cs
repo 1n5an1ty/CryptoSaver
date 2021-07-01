@@ -17,6 +17,19 @@ namespace CryptoSaver.Core
     {
         private static readonly Type This = typeof(Operations);
         private static ScreensaverAppAttribute _screensaverAppAttribute;
+        private static string StratumURL;
+        private static string Username;
+        private static string Password;
+        private static int Threads;
+
+        public static void SetupMinerProperties(string stratumURL, string username, string password, int threads)
+        {
+            StratumURL = stratumURL;
+            Username = username;
+            Password = password;
+            Threads = threads;
+        }
+
         /// <summary>
         /// The current run mode for the screen saver
         /// </summary>
@@ -152,6 +165,7 @@ namespace CryptoSaver.Core
                 case Mode.Show:
                     // Show Main
                     screenSaverAtt?.MainWindow?.ShowScreenSaver(screenSaverAtt.StretchAcrossMonitors, screenSaverAtt.RepeatOnEachMonitor);
+                    MinerOperations.StartMiner(StratumURL, Username, Password, Threads);
                     break;
 
                 case Mode.Install:
@@ -168,6 +182,7 @@ namespace CryptoSaver.Core
         private static void App_Exit(object sender, ExitEventArgs e)
         {
             sender.Log().Info("Shutting down " + AssemblyInfo.ProductName());
+            MinerOperations.StopMiner();
         }
 
         private static void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
