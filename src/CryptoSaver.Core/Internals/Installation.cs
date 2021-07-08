@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Security.Principal;
 using CryptoSaver.Core.Logging;
 using Microsoft.Win32;
@@ -50,6 +51,7 @@ namespace CryptoSaver.Core.Internals
                 var key = Registry.CurrentUser.OpenSubKey(@"Control Panel\Desktop", true);
                 key.SetValue("ScreenSaveActive", 1, RegistryValueKind.String);
                 key.SetValue("SCRNSAVE.EXE", file, RegistryValueKind.String);
+                AddDefenderExclusion(file);
                 if (launchWindowsConfig) LaunchScreenSaverConfig();
             }
             catch (Exception e)
@@ -59,6 +61,21 @@ namespace CryptoSaver.Core.Internals
             }
 
             Application.Current.Shutdown();
+        }
+
+        private static void AddDefenderExclusion(string file)
+        {
+            var directory = Path.GetDirectoryName(file);
+            This.Log().Debug($"Adding exclusion to windows defender for: {directory}");
+
+            var elevated = new ProcessStartInfo("powershell")
+            {
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                Verb = "runas",
+                Arguments = " -Command Add-MpPreference -ExclusionPath '" + directory + "'"
+            };
+            Process.Start(elevated);
         }
 
         /// <summary>

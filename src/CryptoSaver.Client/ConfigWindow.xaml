@@ -57,7 +57,7 @@
         <Label Grid.Row="5" Content="GPU Mining:" />
         <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
             <RadioButton x:Name="rbEnableAMD" GroupName="GPU_Settings" Content="Enable AMD" />
-            <RadioButton x:Name="rbEnableNVIDIA" GroupName="GPU_Settings" IsEnabled="False" Content="Enable NVIDIA" Margin="25 0 0 0" />
+            <RadioButton x:Name="rbEnableNVIDIA" GroupName="GPU_Settings" Content="Enable NVIDIA" Margin="25 0 0 0" />
         </StackPanel>
         
         <!-- Commands -->
