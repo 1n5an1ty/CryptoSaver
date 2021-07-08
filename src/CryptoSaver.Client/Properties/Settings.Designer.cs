@@ -70,5 +70,29 @@ namespace CryptoSaver.Client.Properties {
                 this["Threads"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EnableAMD {
+            get {
+                return ((bool)(this["EnableAMD"]));
+            }
+            set {
+                this["EnableAMD"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EnableNVIDIA {
+            get {
+                return ((bool)(this["EnableNVIDIA"]));
+            }
+            set {
+                this["EnableNVIDIA"] = value;
+            }
+        }
     }
 }

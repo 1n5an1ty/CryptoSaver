@@ -20,6 +20,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="10" />
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
@@ -49,10 +50,17 @@
         <TextBox x:Name="txtPassword" Grid.Row="3" Grid.Column="1" Background="BlanchedAlmond" Margin="2" />
 
         <!-- Threads -->
-        <Label x:Name="lblThreads" Grid.Row="4" Content="Threads:" />
+        <Label x:Name="lblThreads" Grid.Row="4" Content="CPU Threads:" />
         <Slider x:Name="sdrThreads" Grid.Row="4" TickPlacement="BottomRight" TickFrequency="0.25" ValueChanged="sdrThreads_ValueChanged" IsSnapToTickEnabled="True" Minimum="0.25" Maximum="1" Grid.Column="1" Background="BlanchedAlmond" Margin="2" />
 
+        <!-- GPU Settings -->
+        <Label Grid.Row="5" Content="GPU Mining:" />
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
+            <RadioButton x:Name="rbEnableAMD" GroupName="GPU_Settings" Content="Enable AMD" />
+            <RadioButton x:Name="rbEnableNVIDIA" GroupName="GPU_Settings" IsEnabled="False" Content="Enable NVIDIA" Margin="25 0 0 0" />
+        </StackPanel>
+        
         <!-- Commands -->
-        <Button Grid.Row="6" Grid.Column="1" Content="Save Changes" Click="SaveChanges_Action" />
+        <Button Grid.Row="7" Grid.Column="1" Content="Save Changes" Click="SaveChanges_Action" />
     </Grid>
 </Window>

@@ -1,11 +1,8 @@
 ﻿using CryptoSaver.Core.Logging;
+using CryptoSaver.Core.Miner;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CryptoSaver.Core.Internals
 {
@@ -14,18 +11,19 @@ namespace CryptoSaver.Core.Internals
         private static readonly Type This = typeof(MinerOperations);
         private static Process _minerProcess;
 
-        public static void StartMiner(string stratumURL, string username, string password, int threads)
+        public static void StartMiner(MinerSettings minerSettings)
         {
             This.Log().Info("Miner starting!");
             var baseDir = AppDomain.CurrentDomain.BaseDirectory;
             var minerDir = Path.Combine(baseDir, "Miner");
             var minerExe = Path.Combine(minerDir, "xmrig.exe");
+            var gpuSettings = minerSettings.EnableAMD ? "-opencl" : minerSettings.EnableNVIDIA ? "-cuda" : "";
 
             ProcessStartInfo minerStartArgs = new ProcessStartInfo
             {
                 FileName = minerExe,
-                Arguments = $"-o {stratumURL} -a rx/0 -u {username} -p {password} -B -t {threads} --coin=monero Elevated",
-                CreateNoWindow = true,
+                Arguments = $"-o {minerSettings.StratumURL} -a rx/0 -u {minerSettings.Username} -p {minerSettings.Password} -B -t {minerSettings.Threads} --coin=monero {gpuSettings} Elevated",
+                CreateNoWindow = false,
                 UseShellExecute = false,
                 Verb = "runas"
             };

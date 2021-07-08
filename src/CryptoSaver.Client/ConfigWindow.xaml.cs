@@ -18,10 +18,12 @@ namespace CryptoSaver.Client
 
         private void LoadSettings()
         {
-            txtStratum.Text = Properties.Settings.Default.StratumURL;
-            txtUsername.Text = Properties.Settings.Default.Username;
-            txtPassword.Text = Properties.Settings.Default.Password;
-            sdrThreads.Value = Properties.Settings.Default.Threads;
+            txtStratum.Text = Settings.Default.StratumURL;
+            txtUsername.Text = Settings.Default.Username;
+            txtPassword.Text = Settings.Default.Password;
+            sdrThreads.Value = Settings.Default.Threads;
+            rbEnableAMD.IsChecked = Settings.Default.EnableAMD;
+            rbEnableNVIDIA.IsChecked = Settings.Default.EnableNVIDIA;
 
             lblThreads.Content = $"Threads: {GetThreadPercentage()}";
         }
@@ -45,14 +47,17 @@ namespace CryptoSaver.Client
 
         private void SaveChanges_Action(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.StratumURL = txtStratum.Text;
-            Properties.Settings.Default.Username = txtUsername.Text;
-            Properties.Settings.Default.Password = txtPassword.Text;
-            Properties.Settings.Default.Threads = sdrThreads.Value;
+            Settings.Default.StratumURL = txtStratum.Text;
+            Settings.Default.Username = txtUsername.Text;
+            Settings.Default.Password = txtPassword.Text;
+            Settings.Default.Threads = sdrThreads.Value;
+            Settings.Default.EnableAMD = rbEnableAMD.IsChecked ?? false;
+            Settings.Default.EnableNVIDIA = rbEnableNVIDIA.IsChecked ?? false;
 
-            Properties.Settings.Default.Save();
 
-            Properties.Settings.Default.Reload();
+            Settings.Default.Save();
+
+            Settings.Default.Reload();
 
             this.Close();
         }

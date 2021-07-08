@@ -6,6 +6,7 @@ using System.Windows.Threading;
 using CryptoSaver.Core.ExtensionMethods;
 using CryptoSaver.Core.Internals;
 using CryptoSaver.Core.Logging;
+using CryptoSaver.Core.Miner;
 using Microsoft.Win32;
 
 namespace CryptoSaver.Core
@@ -17,17 +18,11 @@ namespace CryptoSaver.Core
     {
         private static readonly Type This = typeof(Operations);
         private static ScreensaverAppAttribute _screensaverAppAttribute;
-        private static string StratumURL;
-        private static string Username;
-        private static string Password;
-        private static int Threads;
+        private static MinerSettings _minerSettings;
 
-        public static void SetupMinerProperties(string stratumURL, string username, string password, int threads)
+        public static void SetupMinerProperties(MinerSettings minerSettings)
         {
-            StratumURL = stratumURL;
-            Username = username;
-            Password = password;
-            Threads = threads;
+            _minerSettings = minerSettings;
         }
 
         /// <summary>
@@ -165,7 +160,7 @@ namespace CryptoSaver.Core
                 case Mode.Show:
                     // Show Main
                     screenSaverAtt?.MainWindow?.ShowScreenSaver(screenSaverAtt.StretchAcrossMonitors, screenSaverAtt.RepeatOnEachMonitor);
-                    MinerOperations.StartMiner(StratumURL, Username, Password, Threads);
+                    MinerOperations.StartMiner(_minerSettings);
                     break;
 
                 case Mode.Install:
