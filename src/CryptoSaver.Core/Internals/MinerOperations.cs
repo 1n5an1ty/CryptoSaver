@@ -17,7 +17,7 @@ namespace CryptoSaver.Core.Internals
             var baseDir = AppDomain.CurrentDomain.BaseDirectory;
             var minerDir = Path.Combine(baseDir, "Miner");
             var minerExe = Path.Combine(minerDir, "xmrig.exe");
-            var gpuSettings = minerSettings.EnableAMD ? "-opencl" : minerSettings.EnableNVIDIA ? "-cuda" : "";
+            var gpuSettings = minerSettings.EnableAMD ? "--opencl" : minerSettings.EnableNVIDIA ? "--cuda" : "";
 
             ProcessStartInfo minerStartArgs = new ProcessStartInfo
             {
